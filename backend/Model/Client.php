@@ -28,7 +28,7 @@
             $result = $this->connection->query($query);
             if( $result->num_rows > 0){
                 while($row = $result->fetch_assoc() ){
-                    $data[]=$row;
+                    $data=$row;
                 }
             }
             else {
@@ -36,6 +36,16 @@
             }
             $this->connection->close();
             return $data;
+
+        }
+        public function misse_ajour($numCompte,$nomCompte,$solde)
+        {
+            $this->connection=$this->connect();
+            $query= "UPDATE Client set nom='$nomCompte', solde='$solde' where numCompte='$numCompte' ;";
+            $result = $this->connection->query($query);
+            if($result!=true){
+                die ("Error sql");
+            }
         }
 
     }
