@@ -33,7 +33,7 @@
 <script>
 
 import axios from 'axios';
-// import affichage from './components/ajout.vue'
+// import ajout from 'ajout.vue'
 
 export default{
   data(){
@@ -60,69 +60,80 @@ export default{
 </script>
 <style>
 main.table{
-            width: 82vw;
-            height: 90vh;
-            background-color: #fff5;
-            backdrop-filter: blur(7px);
-            box-shadow: 0 .4rem .8rem #0005;
-            border-radius: .8rem;
-            overflow: hidden;
-            position:  absolute;
-            top: 0%;
-            right: 0px;
+    /* width: 50vw; */
+    /* height: 90vh; */
+    background-color: #fff5;
+    backdrop-filter: blur(7px);
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: .8rem;
+    /* overflow: hidden; */
+    position:  absolute;
+    top: 20%;
+    /* visibility: hidden; */
+}
 
-          
-        }
-        .table_header{
-            width: 100%;
-            height: 10%;
-            background-color: #fff4;
-            padding: .8rem;
-        }
-        .table_body{
-            width: 95%;
-            height:58vh;
-            max-height: calc(89%-.1.6rem);
-            background-color: #fffb;
-            margin: .8rem auto;
-            border-radius: .6rem;
-            overflow-y:auto;
 
-        }
-        .table_body::-webkit-scrollbar{
-            width: 0.5rem;
-            height: 0.5rem;            
-        }
-        .table_body::-webkit-scrollbar-thumb{
-            border-radius: .5rem;
-            background-color: #0004;
-            visibility: hidden;
 
-        }
-           .table_body:hover::-webkit-scrollbar-thumb{
-            visibility: visible;
-            
-        }
-        table,th,td{
-            padding: 1rem;
-            border-collapse:collapse ;
-            text-align: left;
+.table_header{
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    padding: .8rem;
+}
+.table_body{
+    width: 95%;
+    height:58vh;
+    max-height: calc(89%-.1.6rem);
+    background-color: #fffb;
+    margin: .8rem auto;
+    border-radius: .6rem;
+    overflow:auto;
 
-        }
-        table{
-            width: 100%;
-        }
-        thead th{
-            position: sticky;
-            top: 0;
-            left: 0;
-            background-color: #d5d1defe;
-        }
-        tbody tr:nth-child(even){
-            background-color: #0000000b; 
+}
+.table_body::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;            
+}
+.table_body::-webkit-scrollbar-thumb{
+    border-radius: .5rem;
+    background-color: #0004;
+    visibility: hidden;
 
-        }
-        tbody tr:hover{
-            background-color: #fff6;
-        }
+}
+   .table_body:hover::-webkit-scrollbar-thumb{
+    visibility: visible;
+    
+}
+table,th,td{
+    padding: 1rem;
+    border-collapse:collapse ;
+    text-align: left;
+
+}
+
+table{
+    width: 100%;
+}
+thead th{
+    position:sticky;
+    top: 0;
+    left: 0;
+    background-color: #d5d1defe;
+}
+
+td img{
+    width: 25px;
+    height: 25px;
+}
+tbody tr:nth-child(even){
+    background-color: #0000000b; 
+
+}
+tbody tr:hover{
+    background-color: #fff6;
+}
+.icons{
+    width: 25px;
+    height: 25px;
+}
 </style>
