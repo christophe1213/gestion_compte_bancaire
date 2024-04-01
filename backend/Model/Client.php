@@ -47,6 +47,7 @@
             if(!$result){
                 die("Error ");
             }
+            $this->connection->close() ;
         }
         public function misse_ajour($numCompte,$nomCompte,$solde)
         {
@@ -56,6 +57,19 @@
             if($result!=true){
                 die ("Error sql");
             }
+            $this->connection->close() ;
+        }
+
+        public function suppression($numCompte)
+        {
+
+            $this->connection=$this->connect();
+            $query= "Delete from client where numCompte='$numCompte' ;";
+            $result = $this->connection->query($query);
+            if($result!=true){
+                die ("Error sql");
+            }
+            $this->connection->close() ;
         }
 
     }
