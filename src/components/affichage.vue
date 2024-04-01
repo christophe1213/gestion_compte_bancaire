@@ -42,7 +42,8 @@ export default{
   },
   mounted(){
     axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
-   this.test=reponse.data
+        console.log(reponse.data)
+        this.test=reponse.data
 })  
   }
 }

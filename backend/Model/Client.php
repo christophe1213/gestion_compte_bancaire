@@ -28,7 +28,7 @@
             $result = $this->connection->query($query);
             if( $result->num_rows > 0){
                 while($row = $result->fetch_assoc() ){
-                    $data=$row;
+                    $data[]=$row;
                 }
             }
             else {
@@ -37,6 +37,16 @@
             $this->connection->close();
             return $data;
 
+        }
+
+        public function insertion($numCompte,$nom,$solde)
+        {
+            $this->connection=$this->connect();
+            $query= "INSERT INTO Client VALUES('$numCompte','$nom','$solde')";
+            $result=$this->connection->query($query);
+            if(!$result){
+                die("Error ");
+            }
         }
         public function misse_ajour($numCompte,$nomCompte,$solde)
         {
