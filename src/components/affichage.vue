@@ -1,7 +1,9 @@
 <template>
+    <!-- <ajout></ajout> -->
     <main class="table">
         <section class="table_header">
             <h1>The Table</h1>
+            <button @click="ajout">ajouter</button>
         </section>
         <section class="table_body">
             <table>
@@ -31,12 +33,13 @@
 <script>
 
 import axios from 'axios';
-
+// import affichage from './components/ajout.vue'
 
 export default{
   data(){
     return{
-      test:[],
+      test:[]
+      
 
     }
   },
@@ -44,7 +47,14 @@ export default{
     axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
         console.log(reponse.data)
         this.test=reponse.data
-})  
+    }).catch((error)=>{
+        console.log(error)
+    })  
+  },
+  methods:{
+    ajout(){
+        console.log("Kaiza")
+  }
   }
 }
 </script>
