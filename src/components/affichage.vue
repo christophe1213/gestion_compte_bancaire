@@ -78,13 +78,19 @@ export default{
   methods:{
     ajout(){
         if(!this.$refs.ajout.afficher)this.$refs.ajout.afficher=true
-        else this.$refs.ajout.afficher=false
 
   },
+
 
     b(id){
         // console.log(this.$refs.supprimer[0])
         this.$refs.supprimer[0].supprimer(id)
+        this.r()
+
+    },
+    async r(){
+        var r= await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php')
+        this.test=r.data
     }
 
   }

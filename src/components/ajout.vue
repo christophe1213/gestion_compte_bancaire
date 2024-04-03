@@ -15,7 +15,6 @@
 
 import axios from 'axios';
 
-
 export default{
   data(){
     return{
@@ -30,6 +29,9 @@ export default{
 
     }
   },
+//   components:{
+//     Affichage
+//   },
   methods:{
     ajout(){
         if(this.client.numCompte!=''&&this.client.nom!=''&&this.client.solde!=''){
@@ -40,6 +42,7 @@ export default{
                 this.client.nom=''
                 this.client.solde=''
                 this.afficher=false
+                console.log(this.$ref)
         }
         else{
             alert('Remplire le champs')

@@ -22,8 +22,8 @@
      }
    },
    methods:{
-        supprimer(id){
-            axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/suppression.php?id='+id).then((reponse)=>{
+       async supprimer(id){
+        await    axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/suppression.php?id='+id).then((reponse)=>{
                 console.log(reponse)
             }).catch((error)=>{
                 console.log(error)
