@@ -71,6 +71,12 @@
             }
             $this->connection->close() ;
         }
-        
+        public function soldeTotal(){
+            $this->connection=$this->connect();
+            $querry="SELECT sum(solde) as SoldeTotal FROM Client; ";
+            $result=$this->connection->query($querry);
+            $solde=$result->fetch_assoc();
+            return $solde["SoldeTotal"];
+        }
     }
 ?>

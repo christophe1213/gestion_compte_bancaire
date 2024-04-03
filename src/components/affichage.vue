@@ -30,8 +30,11 @@
                     </tr>
                 </tbody>
             </table>
-       
+    
     </section>
+    <div>
+        solde Total : {{ solde }} Ar
+    </div>
  </main>
  <div>
     <!-- {{ t|k }} -->
@@ -46,7 +49,7 @@ export default{
     return{
       test:[],
       t:70,
-      form_ajout:false
+      solde:''
     }
   },
   components:{
@@ -66,7 +69,11 @@ export default{
         this.test=reponse.data
     }).catch((error)=>{
         console.log(error)
-    })  
+    })
+    
+    axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/solde.php').then((reponse)=>{
+        this.solde=reponse.data
+    })
   },
   methods:{
     ajout(){
