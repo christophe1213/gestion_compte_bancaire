@@ -1,13 +1,13 @@
 <template>
-   <div class="message">
+   <div v-if="afficher" class="message">
         <div class="container">
-            <form>
+            <div class="form">
                 <p class="tittre_message">Ajout </p>
                 <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
                 <input type="text" v-model="client.nom" placeholder="Nom" required><br>
                 <input type="number" v-model="client.solde" name="solde placeholder"  required ><br>
-                <button @click="ajout"> Alert </button>
-            </form>
+                <button class="btn_confi" @click="ajout"> Ajouter </button>
+            </div>    
         </div>
     </div>
 </template>
@@ -24,18 +24,27 @@ export default{
             numCompte:'',
             nom:'',
             solde:''
-        }
-    //   afficher:true
+        },
+      afficher:true
       
 
     }
   },
   methods:{
     ajout(){
-        axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/ajout.php',this.client).then((reponse)=>{
+        if(this.client.numCompte!=''&&this.client.nom!=''&&this.client.solde!=''){
+            axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/ajout.php',this.client).then((reponse)=>{
           console.log(reponse)
-      })
-    // alert('Je')
+                })
+                this.client.numCompte=''
+                this.client.nom=''
+                this.client.solde=''
+                this.afficher=false
+        }
+        else{
+            alert('Remplire le champs')
+        }
+     
     },
   }
   }
@@ -62,7 +71,7 @@ export default{
     position: relative;
     
 }
-form{
+.form{
     position: relative;
     top:0px;
     width: 300px;
