@@ -1,4 +1,5 @@
 <template>
+
    <div v-if="afficher" class="message">
         <div class="container">
             <div class="form">
@@ -7,15 +8,18 @@
                 <input type="text" v-model="client.nom" placeholder="Nom" required><br>
                 <input type="number" v-model="client.solde" name="solde placeholder"  required ><br>
                 <button class="btn_confi" @click="ajout"> Ajouter </button>
+                <button @click="c"></button>
             </div>    
         </div>
     </div>
+
 </template>
 <script>
 
 import axios from 'axios';
 
 export default{
+
   data(){
     return{
       test:[],
@@ -36,19 +40,27 @@ export default{
     ajout(){
         if(this.client.numCompte!=''&&this.client.nom!=''&&this.client.solde!=''){
             axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/ajout.php',this.client).then((reponse)=>{
-          console.log(reponse)
+        //   console.log(reponse)
                 })
                 this.client.numCompte=''
                 this.client.nom=''
                 this.client.solde=''
                 this.afficher=false
-                console.log(this.$ref)
+                console.log(this.$emit('m'))
+                console.log("Jja")
+                
+                this.$emit('c')
+
         }
         else{
             alert('Remplire le champs')
         }
      
     },
+    c(){
+        this.$emit('c')
+        console.log('G')
+    }
   }
   }
 

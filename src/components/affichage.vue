@@ -1,6 +1,6 @@
 <template>
  
-    <ajout ref="ajout" ></ajout>
+    <ajout @c="r" ref="ajout" ></ajout>
     <main class="table">
         <section class="table_header">
             <h1>The Table</h1>
@@ -19,14 +19,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="data in test " v-bind:key="data.id" >
+                    <tr v-for="(data, i) in test " v-bind:key="data.id" >
                         <td>{{ data.nom }}</td>
                         <td>{{ data.solde }}</td>
                         <td> {{ t }}</td>
                         
                         <td><button>modifier</button></td>
-                        <supprimer ref="supprimer"></supprimer>
-                        <td><button @click="b(data.numCompte)">supprimer</button></td>
+                        <supprimer  ref="supprimer"></supprimer>
+                        <td><button @click="b(data.numCompte,i)">supprimer</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -49,7 +49,8 @@ export default{
     return{
       test:[],
       t:70,
-      solde:''
+      solde:'',
+
     }
   },
   components:{
@@ -82,15 +83,21 @@ export default{
   },
 
 
-    b(id){
+    b(id,i){
         // console.log(this.$refs.supprimer[0])
-        this.$refs.supprimer[0].supprimer(id)
+  
+        this.$refs.supprimer[i].afficher=true
+        // this.$refs.supprimer[i].supprimer(id)
         this.r()
 
     },
     async r(){
         var r= await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php')
         this.test=r.data
+        console.log(this.test[1])
+    },
+    m(){
+        console.log("Salut")
     }
 
   }
@@ -101,7 +108,7 @@ export default{
     display: none;
 }
 main.table{
-    /* width: 50vw; */
+    width: 750px;
     /* height: 90vh; */
     background-color: #fff5;
     backdrop-filter: blur(7px);

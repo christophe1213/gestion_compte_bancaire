@@ -1,5 +1,13 @@
 <template>
-  
+   <div v-if="afficher" class="message">
+        <div class="box_message">
+    
+                <p class="tittre_message">Vous voulez le supprimer</p>
+                    <button class="btn_confi" >OUI</button>
+                    <button class="btn_confi" @click="non_supprimer" >NON</button>     
+        </div>
+
+    </div>
 
  </template>
  <script>
@@ -16,7 +24,7 @@
              nom:'dfdf',
              solde:''
          },
-       afficher:true
+       afficher:false
        
  
      }
@@ -30,10 +38,7 @@
             })
         },
         non_supprimer(){
-
-        },
-        aiza(){
-            alert('Kai')
+            this.afficher=false
         }
    }
    }
