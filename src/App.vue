@@ -1,6 +1,7 @@
 
 <template>
     <affichage></affichage>
+
 </template>
 <script setup>
     import { RouterLink, RouterView } from 'vue-router'

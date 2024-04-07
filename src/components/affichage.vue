@@ -22,7 +22,7 @@
                     <tr v-for="(data, i) in test " v-bind:key="data.id" >
                         <td>{{ data.nom }}</td>
                         <td>{{ data.solde }}</td>
-                        <td> {{ t }}</td>
+                        <td> {{ ops(data.solde)   }}</td>
                         
                         <td><button>modifier</button></td>
                         <supprimer  ref="supprimer"></supprimer>
@@ -44,24 +44,31 @@
 import Ajout from '@/components/ajout.vue';
 import Supprimer from '@/components/supprimer.vue';
 import axios from 'axios';
+
+
 export default{
   data(){
     return{
       test:[],
       t:70,
       solde:'',
-
+      message: 'Hello world'
     }
   },
   components:{
     Ajout,
     Supprimer
   },
-//   filters: {
-//         k: function(value){
-//                 return value + "00"
-//     }
-//   },        
+  computed:{
+    ops(){
+        return function(s){
+            if(s<1000) return 'Insuifissant'
+            else if(s>1000&&s<=5000) return 'Moyen'
+            else return 'éléve'
+      
+        }
+    }
+  },          
   mounted(){
     axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
         console.log(reponse.data)
