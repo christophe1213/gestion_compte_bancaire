@@ -1,15 +1,14 @@
 <template>
 
     <div v-if="afficher" class="message">
-        <!-- {{ x }} -->
          <div class="container">
              <div class="form">
-                 <p class="tittre_message">Modifier </p>
-                 <input type="text" v-model="client_modifier.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
-                 <input type="text" v-model="client_modifier.nom" placeholder="Nom" required><br>
-                 <input type="number" v-model="client_modifier.solde" name="solde placeholder"  required ><br>
-                 <button class="btn_confi" @click="modifier"> Modifier </button>
-             
+                 <p class="tittre_message">Ajout </p>
+                 <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
+                 <input type="text" v-model="client.nom" placeholder="Nom" required><br>
+                 <input type="number" v-model="client.solde" name="solde placeholder"  required ><br>
+                 <button class="btn_confi" @click="ajout"> Ajouter </button>
+                 <button @click="c"></button>
              </div>    
          </div>
      </div>
@@ -21,48 +20,57 @@
  
  export default{
     props:{
-        id:'',
-        client_modifier:Object,
-        data:Object
+        numCompte:''
     },
    data(){
      return{
        test:[],
          client:{
-             numCompte:this.id,
-             nom:'Cjr',    
-             solde:2500
+             numCompte:'',
+             nom:'',
+             solde:''
          },
-       afficher:false
+       afficher:true
        
  
      }
    },
-    computed:{
-        x(){
-        if(this.afficher===true){
-            this.client.solde=0
-               axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/client_a_modifer.php?id='+this.id).then((reponse)=>{
-                console.log(reponse.data)
-                this.client=reponse.data
-        })
-        }
-     
-    }}
+    mounted(){
+        axios.get('')
+    }
    ,
    methods:{
- 
-     modifier(){
-        axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/mise_ajour.php',this.client_modifier).then((reponse)=>{
-            console.log(reponse)
-        }).catch((error)=>{
-            console.log(error)
-        })
-        axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
-        
+     ajout(){
+         if(this.client.numCompte!=''&&this.client.nom!=''&&this.client.solde!=''){
+             axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/ajout.php',this.client).then((reponse)=>{
+           console.log(reponse)
+             })
+                 axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
+         console.log(reponse.data)
+          t=reponse.data[0]
+         console.log(6)
          console.log(t)
-        })
-        
+       
+         this.$emit('c',t)
+     }).catch((error)=>{
+         console.log(error)
+     })
+     
+                 // this.client.numCompte=''
+                 // this.client.nom=''
+                 // this.client.solde=''
+                 // this.afficher=false
+                 // console.log(this.$emit('m'))
+                 // console.log("Jja")
+                 //   this.r()
+                 // console.log(a)
+                 // this.$emit('c')
+ 
+         }
+         else{
+             alert('Remplire le champs')
+         }
+      
      },
      c(){
          let t

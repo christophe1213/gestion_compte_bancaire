@@ -38,6 +38,22 @@
             return $data;
 
         }
+        
+        public function selection_client($numCompte){
+            $this->connection=$this->connect();   
+            $query="SELECT * FROM Client where numCompte='$numCompte';";
+            $result = $this->connection->query($query);
+            if( $result->num_rows > 0){
+                while($row = $result->fetch_assoc() ){
+                    $data[]=$row;
+                }
+            }
+            else {
+                $data=0;
+            }
+            $this->connection->close();
+            return $data;
+        }
 
         public function insertion($numCompte,$nom,$solde)
         {

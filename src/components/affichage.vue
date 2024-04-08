@@ -1,9 +1,10 @@
 <template>
  
-    <ajout @c="r" ref="ajout" ></ajout>
+    <ajout @c="a" ref="ajout" ></ajout>
     <main class="table">
         <section class="table_header">
             <h1>The Table</h1>
+            <p>{{ t }}</p>
             <button @click="ajout">ajouter</button>
         </section>
         <section class="table_body">
@@ -23,10 +24,10 @@
                         <td>{{ data.nom }}</td>
                         <td>{{ data.solde }}</td>
                         <td> {{ ops(data.solde)   }}</td>
-                        
-                        <td><button>modifier</button></td>
-                        <supprimer  ref="supprimer"></supprimer>
-                        <td><button @click="b(data.numCompte,i)">supprimer</button></td>
+                        <modifier :id="data.numCompte" :client_modifier="data" ref="modifier"></modifier>
+                        <td><button @click="modifier_btn(i)">modifier</button></td>
+                        <supprimer @c="a" :id="data.numCompte" :a="t"  :d="test" ref="supprimer"></supprimer>
+                        <td><button @click="b(i)">supprimer</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -36,13 +37,12 @@
         solde Total : {{ solde }} Ar
     </div>
  </main>
- <div>
-    <!-- {{ t|k }} -->
- </div>   
+
 </template>
 <script>
 import Ajout from '@/components/ajout.vue';
 import Supprimer from '@/components/supprimer.vue';
+import Modifier from '@/components/modifier.vue';
 import axios from 'axios';
 
 
@@ -57,7 +57,8 @@ export default{
   },
   components:{
     Ajout,
-    Supprimer
+    Supprimer,
+    Modifier
   },
   computed:{
     ops(){
@@ -67,13 +68,35 @@ export default{
             else return 'éléve'
       
         }
-    }
-  },          
-  mounted(){
-    axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
-        console.log(reponse.data)
+    },
+    afficher(){
+       axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
         this.$refs.ajout.afficher=false
-        console.log(this.$refs.ajout.afficher)
+        this.test=reponse.data
+        }).catch((error)=>{
+            console.log(error)
+        })
+        }
+    },          
+  mounted(){
+    // let s = setInterval(()=>{
+    //     axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
+    //     // console.log(reponse.data)
+    //     this.$refs.ajout.afficher=false
+    //     // console.log(this.$refs.ajout.afficher)
+    //     this.test=reponse.data
+    // }).catch((error)=>{
+    //     console.log(error)
+    // })
+    
+    // axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/solde.php').then((reponse)=>{
+    //     this.solde=reponse.data
+    // },1000)
+    // })
+    axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
+        // console.log(reponse.data)
+        this.$refs.ajout.afficher=false
+        // console.log(this.$refs.ajout.afficher)
         this.test=reponse.data
     }).catch((error)=>{
         console.log(error)
@@ -88,14 +111,25 @@ export default{
         if(!this.$refs.ajout.afficher)this.$refs.ajout.afficher=true
 
   },
-
-
-    b(id,i){
-        // console.log(this.$refs.supprimer[0])
-  
+    modifier_btn(i){
+        console.log(i)
+        console.log(this.$refs.modifier[i])
+        this.$refs.modifier[i].afficher=true
+    },
+    a(value1, value2){
+        // alert(value)
+        // this.t=value
+        console.log("4")
+        this.test=value1
+        this.solde=value2
+        // console.log(this.t)
+    },
+    b(i){
+        console.log(this.$refs.supprimer[0])
+        
         this.$refs.supprimer[i].afficher=true
-        // this.$refs.supprimer[i].supprimer(id)
-        this.r()
+        // this.$refs.supprimer[i].supprimer()
+        // this.r()
 
     },
     async r(){

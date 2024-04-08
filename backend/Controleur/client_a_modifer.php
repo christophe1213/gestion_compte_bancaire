@@ -5,14 +5,17 @@
     header('Content-Type: application/json');
 
     require_once(dirname(__FILE__) ."/../Model/Client.php");
-    $Clients = new ClientManager();
-    $data= json_decode(file_get_contents("php://input"),true);
-    if(isset($data["numCompte"])&&isset($data['nom'])){
-        $numCompte =$data['numCompte'];
-        $nom=$data['nom'];
-        $solde=$data['solde'];
-        $Clients->insertion($numCompte, $nom, $solde);
-        echo "Succès";
-    }
 
+    $Clients = new ClientManager();
+ 
+    if(isset($_GET["id"])){
+
+        $numCompte=$_GET['id'];
+       $data = $Clients->selection_client($numCompte);
+       $json = json_encode($data);
+       echo $json;
+
+    }else{
+        echo 'Echec';
+    }
 ?>

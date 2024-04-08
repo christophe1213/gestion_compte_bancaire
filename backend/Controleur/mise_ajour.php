@@ -11,7 +11,7 @@
         $numCompte =$data['numCompte'];
         $nom=$data['nom'];
         $solde=$data['solde'];
-        $Clients->insertion($numCompte, $nom, $solde);
+        $Clients->misse_ajour($numCompte, $nom, $solde);
         echo "Succès";
     }
 
