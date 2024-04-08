@@ -87,12 +87,13 @@
             }
             $this->connection->close() ;
         }
-        public function soldeTotal(){
+        public function solde(){
             $this->connection=$this->connect();
-            $querry="SELECT sum(solde) as SoldeTotal FROM Client; ";
+            $querry="select sum(solde) as soldeTotal, min(solde) as soldeMin, max(solde) as soldeMax from client; ";
             $result=$this->connection->query($querry);
             $solde=$result->fetch_assoc();
-            return $solde["SoldeTotal"];
+            return $solde;
+            
         }
     }
 ?>

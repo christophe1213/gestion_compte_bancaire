@@ -6,7 +6,7 @@
 
     require_once(dirname(__FILE__) ."/../Model/Client.php");
     $Clients = new ClientManager();
-    $data=$Clients->soldeTotal();
+    $data=$Clients->solde();
     $json = json_encode($data);
     echo $json;
 

@@ -22,7 +22,7 @@
                 <tbody>
                     <tr v-for="(data, i) in test " v-bind:key="data.id" >
                         <td>{{ data.nom }}</td>
-                        <td>{{ data.solde }}</td>
+                        <td>{{ data.solde }} Ar</td>
                         <td> {{ ops(data.solde)   }}</td>
                         <modifier :id="data.numCompte" :client_modifier="data" ref="modifier"></modifier>
                         <td><button @click="modifier_btn(i)">modifier</button></td>
@@ -34,7 +34,9 @@
     
     </section>
     <div>
-        solde Total : {{ solde }} Ar
+        solde Total : {{ solde.soldeTotal }} Ar
+        solde Min : {{ solde.soldeMin }} Ar
+        solde Max : {{ solde.soldeMax }} Ar 
     </div>
  </main>
 
@@ -51,7 +53,7 @@ export default{
     return{
       test:[],
       t:70,
-      solde:'',
+      solde:[],
       message: 'Hello world'
     }
   },
@@ -68,17 +70,10 @@ export default{
             else return 'éléve'
       
         }
-    },
-    afficher(){
-       axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
-        this.$refs.ajout.afficher=false
-        this.test=reponse.data
-        }).catch((error)=>{
-            console.log(error)
-        })
-        }
+    }
     },          
   mounted(){
+    this.afficher()
     // let s = setInterval(()=>{
     //     axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
     //     // console.log(reponse.data)
@@ -93,18 +88,18 @@ export default{
     //     this.solde=reponse.data
     // },1000)
     // })
-    axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
-        // console.log(reponse.data)
-        this.$refs.ajout.afficher=false
-        // console.log(this.$refs.ajout.afficher)
-        this.test=reponse.data
-    }).catch((error)=>{
-        console.log(error)
-    })
+    // axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
+    //     // console.log(reponse.data)
+    //     this.$refs.ajout.afficher=false
+    //     // console.log(this.$refs.ajout.afficher)
+    //     this.test=reponse.data
+    // }).catch((error)=>{
+    //     console.log(error)
+    // })
     
-    axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/solde.php').then((reponse)=>{
-        this.solde=reponse.data
-    })
+    // axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/solde.php').then((reponse)=>{
+    //     this.solde=reponse.data
+    // })
   },
   methods:{
     ajout(){
@@ -132,10 +127,12 @@ export default{
         // this.r()
 
     },
-    async r(){
-        var r= await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php')
+    async afficher(){
+      var  r = await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php')
+      var solde= await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/solde.php')
+        this.solde =solde.data
         this.test=r.data
-        console.log(this.test[1])
+            
     },
     m(){
         console.log("Salut")
