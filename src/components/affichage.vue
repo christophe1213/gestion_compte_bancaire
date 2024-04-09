@@ -24,7 +24,7 @@
                         <td>{{ data.nom }}</td>
                         <td>{{ data.solde }} Ar</td>
                         <td> {{ ops(data.solde)   }}</td>
-                        <modifier :id="data.numCompte" :client_modifier="data" ref="modifier"></modifier>
+                        <modifier @c="a" :id="data.numCompte" :client_modifier="data" ref="modifier"></modifier>
                         <td><button @click="modifier_btn(i)">modifier</button></td>
                         <supprimer @c="a" :id="data.numCompte" :a="t"  :d="test" ref="supprimer"></supprimer>
                         <td><button @click="b(i)">supprimer</button></td>
@@ -77,7 +77,7 @@ export default{
     // let s = setInterval(()=>{
     //     axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
     //     // console.log(reponse.data)
-    //     this.$refs.ajout.afficher=false
+        this.$refs.ajout.afficher=false
     //     // console.log(this.$refs.ajout.afficher)
     //     this.test=reponse.data
     // }).catch((error)=>{

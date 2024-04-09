@@ -5,9 +5,9 @@
          <div class="container">
              <div class="form">
                  <p class="tittre_message">Modifier </p>
-                 <input type="text" v-model="client_modifier.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
-                 <input type="text" v-model="client_modifier.nom" placeholder="Nom" required><br>
-                 <input type="number" v-model="client_modifier.solde" name="solde placeholder"  required ><br>
+                 <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
+                 <input type="text" v-model="client.nom" placeholder="Nom" required><br>
+                 <input type="number" v-model="client.solde" name="solde placeholder"  required ><br>
                  <button class="btn_confi" @click="modifier"> Modifier </button>
              
              </div>    
@@ -29,9 +29,9 @@
      return{
        test:[],
          client:{
-             numCompte:this.id,
-             nom:'Cjr',    
-             solde:2500
+             numCompte:this.client_modifier.numCompte,
+             nom:this.client_modifier.nom,    
+             solde:this.client_modifier.solde
          },
        afficher:false
        
@@ -53,15 +53,14 @@
    methods:{
  
      modifier(){
-        axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/mise_ajour.php',this.client_modifier).then((reponse)=>{
+        axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/mise_ajour.php',this.client).then((reponse)=>{
             console.log(reponse)
+            this.r()
+            this.afficher=false
         }).catch((error)=>{
             console.log(error)
         })
-        axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
         
-         console.log(t)
-        })
         
      },
      c(){
@@ -85,12 +84,14 @@
          // console.log(t)
      },
      async r(){
-                 var r= await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php')
-                 let t =r.data
-                 console.log(t)
-                 this.$emit('c', t)
-                 // return t
-             },
+      var  r = await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php')
+      var solde= await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/solde.php')
+
+        // this.test= r
+        console.log(r.data)
+                this.$emit('c', r.data, solde.data)
+            
+            },
    }
    }
  
