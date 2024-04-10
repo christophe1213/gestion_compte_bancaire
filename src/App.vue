@@ -1,6 +1,6 @@
 
 <template>
-    <!-- <affichage></affichage> -->
+    <affichage></affichage>
     <!-- <Barchart></Barchart> -->
     <PieChart></PieChart>
 </template>

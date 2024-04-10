@@ -1,13 +1,14 @@
 <template>
     <Pie
-    :options="chartOptions"
-    :data="chartData"
-    :id="chartId"
-    :plugins="plugins"
-    :css-classes="cssClasses"
-    :styles="styles"
-    :width="width"
-    :height="height"
+      :options="chartOptions"
+      :data="chartData"
+      :id="chartId"
+      :dataset-id-key="datasetIdKey"
+      :plugins="plugins"
+      :css-classes="cssClasses"
+      :styles="styles"
+      :width="width"
+      :height="height"
     />
   </template>
   
@@ -72,8 +73,7 @@
           ]
         },
         chartOptions: {
-          responsive: true,
-          maintainAspectRatio: false
+    
         }
       }
     }
