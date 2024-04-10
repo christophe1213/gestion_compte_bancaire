@@ -23,13 +23,12 @@
                 client:[]
             }
         },
-        updated(){
-            console.log("Client misse à jour(app.vue) ")
-        },
+
         methods:{
             Client_data(value){
                 this.client=value
-                console.log("This.Client="+this.client)
+                // console.log("This.Client="+this.client)
+                console.log("This.client"+this.client.soldeMax)
             }
         }
     }

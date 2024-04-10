@@ -43,11 +43,11 @@
       },
       width: {
         type: Number,
-        default: 400
+        default: 100
       },
       height: {
         type: Number,
-        default: 400
+        default: 100
       },
       cssClasses: {
         default: '',
@@ -67,11 +67,13 @@
       return {
         // chartData:null,
         chartData: {
-          labels: this.client.map(item=>item.nom),
+          // labels: this.client.map(item=>item.nom),
+              labels:['solde Total', 'solde maximal', 'solde mininmal'],
           datasets: [
             {
-              backgroundColor: ['#54823', '#E4551'],
-              data: this.client.map(item=>item.solde)
+              backgroundColor: ['#41B883', '#E46651', '#00D8FF',],
+              // data: this.client.map(item=>item.solde)
+              data:[this.client.soldeTotal,this.client.soldeMax,this.client.soldeMin]
             }
           ]
         },
@@ -92,20 +94,23 @@
     },
  
   beforeUpdate(){
-    console.log('Monté : '+this.client.map(item => item.nom))
+    // console.log('Monté : '+this.client.map(item => item.nom))
            var    c= {
               
-            labels: this.client.map(item=>item.nom),
+            // labels: this.client.map(item=>item.nom),
+            labels:['solde Total', 'solde maximal', 'solde mininmal'],
           datasets: [
             {
-              backgroundColor: ['#54823', '#E4551'],
-              data: this.client.map(item=>item.solde)
+              backgroundColor: ['#41B883', '#E46651', '#00D8FF',],
+              // data: this.client.map(item=>item.solde)
+                data:[this.client.soldeTotal,this.client.soldeMax,this.client.soldeMin]
+
             }]
               }
         this.chartData=c
   },
     updated(){
-      console.log("Data chartjs : "+this.client.map(item => item.nom))
+      // console.log("Data chartjs : "+this.client.map(item => item.nom))
         //   var    c= {
               
         //     labels: this.client.map(item=>item.nom),
@@ -126,4 +131,9 @@
     
   }
   </script>
+<style>
+  #pie-chart{
+    width: 15px;
+  }
 
+</style>
