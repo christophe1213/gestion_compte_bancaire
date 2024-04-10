@@ -1,8 +1,8 @@
 
 <template>
     <!-- <affichage></affichage> -->
-    <Barchart></Barchart>
-
+    <!-- <Barchart></Barchart> -->
+    <PieChart></PieChart>
 </template>
 <script setup>
     import { RouterLink, RouterView } from 'vue-router'
@@ -10,6 +10,7 @@
     import affichage from './components/affichage.vue'
     // import graphe from '@/components/graphe.vue'
     import Barchart from '@/components/Barchart.vue'
+    import PieChart from '@/components/PieChart.vue'
 
 </script>
 
