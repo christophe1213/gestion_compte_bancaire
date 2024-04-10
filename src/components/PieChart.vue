@@ -1,4 +1,5 @@
 <template>
+  <button @click="x">ss</button>
     <Pie
       :options="chartOptions"
       :data="chartData"
@@ -59,22 +60,31 @@
       plugins: {
         type: Array,
         default: () => []
-      }
+      },
+      client:Object
     },
     data() {
       return {
         chartData: {
-          labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+          labels: this.client.map(item=>item.nom),
           datasets: [
             {
-              backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-              data: [40, 20, 80, 10]
+              backgroundColor: ['#41B883', '#E45541'],
+              data: this.client.map(item=>item.solde)
             }
           ]
         },
         chartOptions: {
     
         }
+      }
+    },
+    // mounted(){
+    //   console.log(this.client)
+    // },
+    methods:{
+      x(){
+        console.log(this.client)
       }
     }
   }

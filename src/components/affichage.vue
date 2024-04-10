@@ -74,6 +74,8 @@ export default{
     },          
   mounted(){
     this.afficher()
+    // console.log("This.test="+this.test)
+    // this.$emit('clientData',this.test)
     // let s = setInterval(()=>{
     //     axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
     //     // console.log(reponse.data)
@@ -132,6 +134,8 @@ export default{
       var solde= await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/solde.php')
         this.solde =solde.data
         this.test=r.data
+        console.log("This.test="+this.test)
+          this.$emit('clientData',this.test)
             
     },
     m(){
