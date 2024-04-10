@@ -2,7 +2,7 @@
 <template>
     <affichage @clientData="Client_data"></affichage>
     <!-- <Barchart></Barchart> -->
-    <PieChart :client="client"></PieChart>
+    <Pie_Chart :client="client"></Pie_Chart>
 </template>
 <script>
     import { RouterLink, RouterView } from 'vue-router'
@@ -10,18 +10,21 @@
     import affichage from './components/affichage.vue'
     // import graphe from '@/components/graphe.vue'
     import Barchart from '@/components/Barchart.vue'
-    import PieChart from '@/components/PieChart.vue'
+    import Pie_Chart from '@/components/Pie_Chart.vue'
 
 
     export default{
         components:{
             affichage,
-            PieChart
+            Pie_Chart
         },
         data(){
             return {
                 client:[]
             }
+        },
+        updated(){
+            console.log("Client misse à jour(app.vue) ")
         },
         methods:{
             Client_data(value){

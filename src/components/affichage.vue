@@ -38,6 +38,7 @@
         solde Min : {{ solde.soldeMin }} Ar
         solde Max : {{ solde.soldeMax }} Ar 
     </div>
+    <button @click="m"> KK</button>
  </main>
 
 </template>
@@ -103,6 +104,9 @@ export default{
     //     this.solde=reponse.data
     // })
   },
+  updated(){
+    this.$emit('clientData',this.test)
+  },
   methods:{
     ajout(){
         if(!this.$refs.ajout.afficher)this.$refs.ajout.afficher=true
@@ -119,6 +123,7 @@ export default{
         console.log("4")
         this.test=value1
         this.solde=value2
+        this.$emit('clientData',this.test)
         // console.log(this.t)
     },
     b(i){
@@ -139,7 +144,8 @@ export default{
             
     },
     m(){
-        console.log("Salut")
+        console.log("This.test="+this.test)
+          this.$emit('clientData',this.test)
     }
 
   }
