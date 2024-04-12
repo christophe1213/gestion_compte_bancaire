@@ -1,15 +1,12 @@
 <template>
-
     <div v-if="afficher" class="message">
-        <!-- {{ x }} -->
          <div class="container">
              <div class="form">
                  <p class="tittre_message">Modifier </p>
                  <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
                  <input type="text" v-model="client.nom" placeholder="Nom" required><br>
                  <input type="number" v-model="client.solde" name="solde placeholder"  required ><br>
-                 <button class="btn_confi" @click="modifier"> Modifier </button>
-             
+                 <button class="btn_confi" @click="modifier"> Modifier </button>           
              </div>    
          </div>
      </div>
@@ -18,82 +15,46 @@
  <script>
  
  import axios from 'axios';
- 
- export default{
-    props:{
-        id:'',
-        client_modifier:Object,
-        data:Object
+    
+    export default{
+        props:{
+            client_modifier:Object,
+        },
+    data(){
+        return{
+            test:[],
+                client:{
+                    numCompte:this.client_modifier.numCompte,
+                    nom:this.client_modifier.nom,    
+                    solde:this.client_modifier.solde
+                },
+            afficher:false
+        
+    
+            }
     },
-   data(){
-     return{
-       test:[],
-         client:{
-             numCompte:this.client_modifier.numCompte,
-             nom:this.client_modifier.nom,    
-             solde:this.client_modifier.solde
-         },
-       afficher:false
-       
- 
-     }
-   },
-    computed:{
-        x(){
-        if(this.afficher===true){
-            this.client.solde=0
-               axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/client_a_modifer.php?id='+this.id).then((reponse)=>{
-                console.log(reponse.data)
-                this.client=reponse.data
-        })
-        }
-     
-    }}
-   ,
-   methods:{
- 
-     modifier(){
-        axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/mise_ajour.php',this.client).then((reponse)=>{
-            console.log(reponse)
-            this.r()
-            this.afficher=false
-        }).catch((error)=>{
-            console.log(error)
-        })
-        
-        
-     },
-     c(){
-         let t
-         axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php').then((reponse)=>{
-         // console.log(reponse.data)
-                     
-         // console.log(this.$refs.ajout.afficher)
-         t=reponse.data[0]
-         
-         console.log(t)
-         this.$emit('c',t)
-     }).catch((error)=>{
-         console.log(error)
-     })
-     
-         this.$emit('c',t)
-         // console.log(this.$emit('c',3))
-         // console.log(t)
-         console.log('G')
-         // console.log(t)
-     },
-     async r(){
-      var  r = await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php')
-      var solde= await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/solde.php')
-
-        // this.test= r
-        console.log(r.data)
-                this.$emit('c', r.data, solde.data)
+    methods:{
+    
+        modifier(){
+            axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/mise_ajour.php',this.client).then((reponse)=>{
+                console.log(reponse)
+                this.r()
+                this.afficher=false
+            }).catch((error)=>{
+                console.log(error)
+            })
             
-            },
-   }
-   }
+            
+        },
+        async r(){
+            var  r = await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php')
+            var solde= await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/solde.php')
+
+            this.$emit('c', r.data, solde.data)
+                
+        },
+    }
+    }
  
  </script>
  <style>

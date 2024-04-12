@@ -8,7 +8,6 @@
                 <input type="text" v-model="client.nom" placeholder="Nom" required><br>
                 <input type="number" v-model="client.solde" name="solde placeholder"  required ><br>
                 <button class="btn_confi" @click="ajout"> Ajouter </button>
-                <button @click="c"></button>
             </div>    
         </div>
     </div>
