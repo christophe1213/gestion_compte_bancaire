@@ -2,6 +2,11 @@
 
    <div v-if="afficher" class="message">
         <div class="container">
+            <svg  width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#FF2540" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete">
+                <line x1="20" y1="11" x2="14" y2="17" ></line>
+                <line x1="14" y1="11" x2="20" y2="17"></line>
+            </svg>
+
             <div class="form">
                 <p class="tittre_message">Ajout </p>
                 <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>

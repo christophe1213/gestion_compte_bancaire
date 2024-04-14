@@ -80,10 +80,7 @@ td img{
     height: 25px;
 
 }
-td img:hover{
-    width: 35px;
-    height: 35px;
-}
+
 tbody tr:nth-child(even){
     background-color: #0000000d; 
 
