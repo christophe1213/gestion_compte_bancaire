@@ -23,10 +23,12 @@
                         <td>{{ data.nom }}</td>
                         <td>{{ data.solde }} Ar</td>
                         <td> {{ ops(data.solde)   }}</td>
-                        <modifier @c="recuperation_donne_elt_enfant" :id="data.numCompte" :client_modifier="data" ref="modifier"></modifier>
                         <td><button @click="modifier_btn(i)">modifier</button></td>
-                        <supprimer @c="recuperation_donne_elt_enfant" :id="data.numCompte"  :d="client" ref="supprimer"></supprimer>
                         <td><button @click="b(i)">supprimer</button></td>
+                        <modifier @c="recuperation_donne_elt_enfant" :id="data.numCompte" :client_modifier="data" ref="modifier"></modifier>
+                      
+                        <supprimer @c="recuperation_donne_elt_enfant" :id="data.numCompte"  :d="client" ref="supprimer"></supprimer>
+                       
                     </tr>
                 </tbody>
             </table>
@@ -37,7 +39,6 @@
         solde Min : {{ solde.soldeMin }} Ar
         solde Max : {{ solde.soldeMax }} Ar 
     </div>
-    <button @click="m"> KK</button>
  </main>
 
 </template>
@@ -112,83 +113,5 @@
         }
 </script>
 <style>
-.display{
-    display: none;
-}
-main.table{
-    width: 750px;
-    /* height: 90vh; */
-    background-color: #fff5;
-    backdrop-filter: blur(7px);
-    box-shadow: 0 .4rem .8rem #0005;
-    border-radius: .8rem;
-    /* overflow: hidden; */
-  
-    /* visibility: hidden; */
-}
 
-
-
-.table_header{
-    width: 100%;
-    height: 10%;
-    background-color: #fff4;
-    padding: .8rem;
-}
-.table_body{
-    width: 95%;
-    height:58vh;
-    max-height: calc(89%-.1.6rem);
-    background-color: #fffb;
-    margin: .8rem auto;
-    border-radius: .6rem;
-    overflow:auto;
-
-}
-.table_body::-webkit-scrollbar{
-    width: 0.5rem;
-    height: 0.5rem;            
-}
-.table_body::-webkit-scrollbar-thumb{
-    border-radius: .5rem;
-    background-color: #0004;
-    visibility: hidden;
-
-}
-   .table_body:hover::-webkit-scrollbar-thumb{
-    visibility: visible;
-    
-}
-table,th,td{
-    padding: 1rem;
-    border-collapse:collapse ;
-    text-align: left;
-
-}
-
-table{
-    width: 100%;
-}
-thead th{
-    position:sticky;
-    top: 0;
-    left: 0;
-    background-color: #d5d1defe;
-}
-
-td img{
-    width: 25px;
-    height: 25px;
-}
-tbody tr:nth-child(even){
-    background-color: #0000000b; 
-
-}
-tbody tr:hover{
-    background-color: #fff6;
-}
-.icons{
-    width: 25px;
-    height: 25px;
-}
 </style>

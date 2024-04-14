@@ -1,5 +1,5 @@
 <template>
-  <button @click="x">ss</button>
+
     <Pie
       :options="chartOptions"
       :data="chartData"
@@ -132,8 +132,6 @@
   }
   </script>
 <style>
-  #pie-chart{
-    width: 15px;
-  }
+
 
 </style>
