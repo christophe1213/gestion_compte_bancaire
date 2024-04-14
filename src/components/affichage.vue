@@ -24,7 +24,7 @@
                         <td>{{ data.solde }} Ar</td>
                         <td> {{ ops(data.solde)   }}</td>
                         <td><button @click="modifier_btn(i)">modifier</button></td>
-                        <td><button @click="b(i)">supprimer</button></td>
+                        <td><img @click="b(i)" src="./icons/supprimer.png" alt="supprimer" width="25px" height="25px"></td>
                         <modifier @c="recuperation_donne_elt_enfant" :id="data.numCompte" :client_modifier="data" ref="modifier"></modifier>
                       
                         <supprimer @c="recuperation_donne_elt_enfant" :id="data.numCompte"  :d="client" ref="supprimer"></supprimer>
@@ -32,6 +32,7 @@
                     </tr>
                 </tbody>
             </table>
+    
     
     </section>
     <div>
