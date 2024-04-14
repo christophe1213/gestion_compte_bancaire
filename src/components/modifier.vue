@@ -1,7 +1,12 @@
 <template>
-    <div v-if="afficher" class="message">
+    <div v-if="afficher" class="message box_update" >
          <div class="container">
              <div class="form">
+                <div class="fermer">
+                    <svg @click="fermer" viewBox="0 0 24 24" width="24" height="24" stroke="#FF2525">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12"/>
+                    </svg>
+                </div> 
                  <p class="tittre_message">Modifier </p>
                  <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
                  <input type="text" v-model="client.nom" placeholder="Nom" required><br>
@@ -52,6 +57,9 @@
             this.$emit('c', r.data, solde.data)
                 
         },
+        fermer(){
+      this.afficher=false
+    }
     }
     }
  
