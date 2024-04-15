@@ -1,6 +1,6 @@
 <template>
 
-   <div v-if="afficher" class="message box_ajout ">
+   <div v-if="afficher" class="message ">
         <div class="container">
            
             <div class="form">

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="afficher" class="message box_update" >
+    <div v-if="afficher" class="message" >
          <div class="container">
              <div class="form">
                 <div class="fermer">
@@ -10,7 +10,7 @@
                  <p class="tittre_message">Modifier </p>
                  <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
                  <input type="text" v-model="client.nom" placeholder="Nom" required><br>
-                 <input type="number" v-model="client.solde" name="solde placeholder"  required ><br>
+                 <input type="number" v-model="client.solde" name="solde" placeholder="solde"  required ><br>
                  <button class="btn_confi" @click="modifier"> Modifier </button>           
              </div>    
          </div>
@@ -37,6 +37,10 @@
         
     
             }
+    },
+    beforeUpdate(){
+        console.log('Modifier'+this.client_modifier.nom)
+        this.client=this.client_modifier
     },
     methods:{
        modifier(){

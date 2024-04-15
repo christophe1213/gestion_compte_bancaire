@@ -1,7 +1,7 @@
 .message{
     background-color: #1115;
     display: flex;
-    width: 100vw;
+    width: 98.7vw;
     height: 207vh;
     justify-content: center;
     /* align-items: center; */
@@ -112,7 +112,7 @@ input[type="submit"]{
   }
 .box_message{
     position: relative;
-    top: 0px;
+    top: 95px;
     background-color: white;
     padding: 2rem;
     height: 10rem;
