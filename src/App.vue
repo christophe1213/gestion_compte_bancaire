@@ -1,5 +1,9 @@
 
 <template>
+     <header>
+    
+        <h1 class="logo"> Application vuecli </h1>
+    </header>
     <affichage @clientData="Client_data"></affichage>
     <!-- <Barchart></Barchart> -->
     <Pie_Chart :client="client"></Pie_Chart>
@@ -37,5 +41,30 @@
 
 
 <style scoped>
+ #app{
+    background-color: black;
+    display: none;
+    display: grid;
+    grid-template-areas: "tete"
+                         "donne "
+                        " graphe";
+ }
+header{
+    grid-area: tete;
+}
+ 
+.table {
+    grid-area: donne;
+    background-color: black; 
+}
+.histogramme{
+    grid-area: graphe;
+  
+    position: relative;
+    top:100px;
+}
+.histogramme h1{
+    text-align: ce;
+}
 
 </style>

@@ -1,6 +1,7 @@
 <template>
-
-    <Pie
+<div class="histogramme">
+  <h1>Camembert</h1>
+  <Pie
       :options="chartOptions"
       :data="chartData"
       :id="chartId"
@@ -11,6 +12,8 @@
       :width="width"
       :height="height"
     />
+</div>
+
   </template>
   
   <script>
