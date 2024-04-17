@@ -2,7 +2,7 @@
     background-color: #1115;
     display: flex;
     width: 98.7vw;
-    height: 207vh;
+    height: 300vh;
     justify-content: center;
     /* align-items: center; */
     font-family: Arial, Helvetica, sans-serif;
@@ -145,6 +145,7 @@ input[type="submit"]{
     margin-right:10px ;
     Background-color: white;
     box-shadow: 20px 20px 40px -6px rgba(0,0,0,.3) ;
+    cursor: pointer;
 }
 
 

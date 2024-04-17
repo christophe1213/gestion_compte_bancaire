@@ -59,7 +59,9 @@ header{
 }
 .histogramme{
     grid-area: graphe;
-  
+    /* text-align: center;
+    width:100vw;
+    height: 100vh; */
     position: relative;
     top:100px;
 }
