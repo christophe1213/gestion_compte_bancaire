@@ -1,7 +1,7 @@
 <template>
  
     <ajout @c=" recuperation_donne_elt_enfant" ref="ajout" ></ajout>
-    <modifier @c="recuperation_donne_elt_enfant" :client_modifier="client_traite" ref="modifier"></modifier>
+    <modifier  @c="recuperation_donne_elt_enfant" :client_modifier="client_traite" ref="modifier"></modifier>
     <supprimer @c="recuperation_donne_elt_enfant" :id="client_traite.numCompte" ref="supprimer"></supprimer>
     <main class="table">
         <section class="table_header">
@@ -34,7 +34,7 @@
                         <td> {{ ops(data.solde)   }}</td>
                         <!-- <td><button @click="modifier_btn(i)">modifier</button></td> -->
                         <td class="modifier" title="modifier">
-                            <svg  @click="modifier_btn(i,data)" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#399913" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
+                            <svg  @click="modifier_btn(data)" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#399913" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                             </svg>
@@ -75,8 +75,7 @@
         client:[],
         solde:[],
         client_traite:[],
-   
-        message: 'Hello world'
+        a:0
         }
     },
         components:{
@@ -90,7 +89,7 @@
             return function(s){
                 if(s<1000) return 'Insuiffissant'
                 else if(s>1000&&s<=5000) return 'Moyen'
-                else return 'éléve'
+                else return 'élévée'
         
             }
         },
@@ -99,7 +98,7 @@
             return s
            }
         }
-        },          
+        },         
         mounted(){
                 this.afficher()
                 this.$refs.ajout.afficher=false
@@ -109,13 +108,15 @@
                 if(!this.$refs.ajout.afficher)this.$refs.ajout.afficher=true
 
         },
-            modifier_btn(i,c){
+            modifier_btn(c){
                 this.$refs.modifier.afficher=true
-                console.log(i)
+                // console.log(i)
                 console.log(c)
                 this.client_traite=c
-                // this.traitemnt(c)
-                console.log(this.client_traite)
+                // this.k()
+                // this.$refs.modifier.afficher=true
+                // // this.traitemnt(c)
+                // console.log(this.client_traite)
                 
            
            

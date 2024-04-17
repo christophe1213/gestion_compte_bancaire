@@ -3,8 +3,8 @@
    <div v-if="afficher" class="message ">
         <div class="container">
            
-            <div class="form">
-              <div class="fermer">
+            <!-- <div class="form"> -->
+              <!-- <div class="fermer">
                 <svg @click="fermer" viewBox="0 0 24 24" width="24" height="24" >
                         <path fill="#FF2525" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12"/>
                     </svg>
@@ -13,8 +13,20 @@
                 <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
                 <input type="text" v-model="client.nom" placeholder="Nom" required><br>
                 <input type="number" v-model="client.solde" name="solde placeholder"  required ><br>
-                <button class="btn_confi" @click="ajout"> Ajouter </button>
-            </div>    
+                <button class="btn_confi" @click="ajout"> Ajouter </button> -->
+            <!-- </div>     -->
+            <form class="form" :onSubmit="ajout" >
+              <div class="fermer">
+                <svg @click="fermer" viewBox="0 0 24 24" width="24" height="24" >
+                        <path fill="#FF2525" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12"/>
+                    </svg>
+              </div>
+                <p class="tittre_message">Ajout </p>
+                <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
+                <input type="text" v-model="client.nom" placeholder="Nom" pattern="[a-z]+"required><br>
+                <input type="number" v-model="client.solde" name="solde placeholder"  required ><br>
+                <button class="btn_confi" type="submit"> Ajouter </button>
+            </form>
         </div>
     </div>
 
@@ -42,11 +54,12 @@ export default{
 //     Affichage
 //   },
   methods:{
-    ajout(){
-        
+    ajout(e){
+      e.preventDefault()
         if(this.client.numCompte!=''&&this.client.nom!=''&&this.client.solde!=''){
             axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/ajout.php',this.client).then((reponse)=>{
-            console.log(reponse)
+            console.log(reponse.data)
+            if(reponse.data!=='Succès')alert('Erreur')
                 this.r()  
             })
           
