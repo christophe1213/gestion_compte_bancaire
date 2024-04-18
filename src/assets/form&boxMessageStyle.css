@@ -11,15 +11,7 @@
     left:0;
     z-index: 200;
 }
-.box_ajout{
-    background-color: #1115;
-    width: 98.5vw;
 
-}
-.box_update{
-    left: -21.9vw;
-    top: -2vh;
-}
 #insertion_envoyer{
     height: 150vh;
     right: 50vw;
@@ -112,7 +104,7 @@ input[type="submit"]{
   }
 .box_message{
     position: relative;
-    top: 95px;
+    /* top: 95px; */
     background-color: white;
     padding: 2rem;
     height: 10rem;

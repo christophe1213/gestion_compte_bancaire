@@ -24,7 +24,7 @@
                 <p class="tittre_message">Ajout </p>
                 <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
                 <input type="text" v-model="client.nom" placeholder="Nom" pattern="[a-z]+"required><br>
-                <input type="number" v-model="client.solde" name="solde placeholder"  required ><br>
+                <input type="number" v-model="client.solde" name="solde "placeholder="solde"  required ><br>
                 <button class="btn_confi" type="submit"> Ajouter </button>
             </form>
         </div>
@@ -45,7 +45,7 @@ export default{
             nom:'',
             solde:''
         },
-      afficher:true
+      afficher:false
       
 
     }
@@ -59,15 +59,19 @@ export default{
         if(this.client.numCompte!=''&&this.client.nom!=''&&this.client.solde!=''){
             axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/ajout.php',this.client).then((reponse)=>{
             console.log(reponse.data)
-            if(reponse.data!=='Succès')alert('Erreur')
-                this.r()  
-            })
+            if(reponse.data!=='Succès')alert('Erreur veuillez vérifier le formulaire')
+            else{
           
-    
                 this.client.numCompte=''
                 this.client.nom=''
                 this.client.solde=''
                 this.afficher=false
+                this.r()  
+            }
+      
+            })
+          
+    
                 // console.log(this.$emit('m'))
                 // console.log("Jja")
                 //   this.r()

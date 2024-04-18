@@ -1,6 +1,7 @@
 <template>
    <div v-if="afficher" class="message">
-        <div class="box_message">
+        <div class="container">
+            <div class="box_message">
             <div class="fermer">
                 <svg @click="fermer" viewBox="0 0 24 24" width="24" height="24" >
                         <path fill="#FF2525" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12"/>
@@ -9,7 +10,9 @@
                 <p class="tittre_message">Vous voulez le supprimer</p>
                     <button class="btn_confi" @click="s">OUI</button>
                     <button class="btn_confi" @click="non_supprimer" >NON</button>     
+        </div>        
         </div>
+   
 
     </div>
 

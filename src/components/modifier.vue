@@ -1,5 +1,5 @@
 <template>
-    <div v-if="afficher" class="message" >
+    <div v-show="afficher" class="message" >
           <div class="container">
              <!-- <div class="form"> -->
                 <!-- <div class="fermer">
@@ -16,7 +16,6 @@
          </div> -->
          <form class="form" :onSubmit="modifier">
             <div class="fermer">
-                {{ a }}
                     <svg @click="fermer" viewBox="0 0 24 24" width="24" height="24" >
                         <path fill="#FF2525" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12"/>
                     </svg>
@@ -38,33 +37,83 @@
     export default{
         props:{
             client_modifier:Object,
-            a:''
+   
         },
     data(){
         return{
             test:[],
-                client:{
-                    numCompte:this.client_modifier.numCompte,
-                    nom:this.client_modifier.nom,    
-                    solde:this.client_modifier.solde
-                },
-            afficher:false
+            c:{
+                numCompte:'',
+                    nom:'',    
+                    solde:''
+            },
+                client:{},
+            afficher:false,
+            a:4
         
     
             }
     },
-  beforeUpdate(){
-        console.log('Modifier'+this.client_modifier.nom)
-        this.client=this.client_modifier
-        // var a = {
-        //     numCompte:this.client_modifier.numCompte,
-        //             nom:this.client_modifier.nom,    
-        //             solde:this.client_modifier.solde
-        // }
-        // this.client=a
-        // console.log("a="+a.nom)
-        // console.log("this.client="+this.client.nom)
+    watch:{
+        client_modifier:{
+            handler(newItem){
+                this.client={...newItem}
+            },
+            deep:true
+        }
     },
+    computded:{
+        x(){
+            return function(s){
+                return s
+            }
+        }
+    },
+//    mounted(){
+//     alert('kk')
+//       if(this.afficher){
+//         this.client=this.client_modifier
+//       }  
+//    },
+
+
+//   beforeUpdate(){
+//         console.log(this.client_modifier.nom)
+
+
+//         // console.log('Modifier'+this.client_modifier.nom)
+ 
+//         // console.log("a="+a.nom)
+//         // console.log("this.client="+this.client.nom)
+//     },
+//     updated(){
+//         // this.client=this.client_modifier
+//         console.log(this.client.nom)
+//         // this.client=this.client_modifier
+//     },
+    // Update(){
+    //         var a = {
+    //                 numCompte:this.client_modifier.numCompte,
+    //                 nom:this.client_modifier.nom,    
+    //                 solde:this.client_modifier.solde
+    //     }
+    //     this.client=a
+    //     console.log("a="+a.nom)
+    //     console.log("this.client="+this.client.nom)
+    // },
+    // beforeUpdate(){
+    //     this.client=this.client_modifier
+    // },
+    // beforeUpdate(){
+    //     if(this.afficher){
+    //         this.client=this.client_modifier
+    //     }else{
+    //         this.client.numCompte='' 
+    //     }
+    //     console.log(this.client.numCompte)
+    // //    console.log("a="+this.a)
+    // //    alert('Kaez')
+    ///},
     methods:{
        modifier(e){
         e.preventDefault()
@@ -86,6 +135,9 @@
         },
         fermer(){
       this.afficher=false
+    },
+    h(a){
+        this.a=a
     }
     }
     }

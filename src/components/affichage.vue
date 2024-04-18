@@ -1,13 +1,12 @@
 <template>
  
-    <ajout @c=" recuperation_donne_elt_enfant" ref="ajout" ></ajout>
-    <modifier  @c="recuperation_donne_elt_enfant" :client_modifier="client_traite" ref="modifier"></modifier>
+    <ajout @c=" recuperation_donne_elt_enfant"  ref="ajout" ></ajout>
+    <modifier  @c="recuperation_donne_elt_enfant" @x="l" :client_modifier="client_traite" ref="modifier"></modifier>
     <supprimer @c="recuperation_donne_elt_enfant" :id="client_traite.numCompte" ref="supprimer"></supprimer>
     <main class="table">
         <section class="table_header">
-            <h1></h1>
-            <!-- <button @click="ajout">ajouter</button> -->
-        
+
+    
             <div class="btn_ajout" title="ajouter">
                 <svg @click="ajout" viewBox="0 0 24 24" width="30" height="30">
                     <path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm4 11h-3v3h-2v-3h-3v-2h3v-3h2v3h3v2z"/>
@@ -34,7 +33,7 @@
                         <td> {{ ops(data.solde)   }}</td>
                         <!-- <td><button @click="modifier_btn(i)">modifier</button></td> -->
                         <td class="modifier" title="modifier">
-                            <svg  @click="modifier_btn(data)" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#399913" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
+                            <svg @click="modifier_btn(data)" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#399913" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                             </svg>
@@ -72,9 +71,18 @@
     export default{
     data(){
         return{
-        client:[],
-        solde:[],
-        client_traite:[],
+        client:[{
+            numCompte:'1',
+            nom:'dfd',
+            solde:5000
+        },
+    {
+        numCompte:'1',
+            nom:'dfd',
+            solde:500
+    }],
+        solde:{},
+        client_traite:{},
         a:0
         }
     },
@@ -101,7 +109,9 @@
         },         
         mounted(){
                 this.afficher()
-                this.$refs.ajout.afficher=false
+                // this.modifier_btn(this.client[0])
+                console.log(this.client[0].nom)
+
         },
         methods:{
             ajout(){
@@ -110,10 +120,14 @@
         },
             modifier_btn(c){
                 this.$refs.modifier.afficher=true
-                // console.log(i)
-                console.log(c)
+              
+            //  this.$emit('i',c)   
                 this.client_traite=c
-                // this.k()
+                console.log("this.client_traite"+client_traite.nom)
+                // this.$refs.modifier.a="Hekke"
+                // this.$refs.modifier.c=c
+
+              // this.k()
                 // this.$refs.modifier.afficher=true
                 // // this.traitemnt(c)
                 // console.log(this.client_traite)
@@ -141,8 +155,11 @@
                 this.solde =solde.data
                 this.client=r.data
                 this.$emit('clientData',this.solde)
-                    
+                
             },
+            l(){
+                return "Kiaie"
+            }
         }
         }
 </script>
