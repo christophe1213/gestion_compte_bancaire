@@ -1,80 +1,26 @@
 
 <template>
-     <header>
-    
-        <h1 class="logo"> Application vuecli </h1>
-    </header>
-
+    <head_project></head_project>
       <affichage @clientData="Client_data"></affichage>
     <!-- <Barchart></Barchart> -->
 
     <Pie_Chart :client="client"></Pie_Chart>
-    <footer class="footer_section">
-    <div class="co">
-      <p>
-        &copy;  Code source <br><br>
-        <span style="background: white;width:25px;padding: 10px;border-radius:20px ; text-align: center"><a href="https://github.com/christophe1213/gestion_compte_bancaire">
-          <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
-                    <path fill="black" d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>        
-        </a></span>
-  
-      </p>
-      
-    </div>
-    
-  </footer>
-<!--    
-       <section class="info_section ">
-
-        <div class=".foot">
-          <div class="contact_nav">
-            <a href="https://www.facebook.com/profile.php?id=100072182053162">
-              <div style="background-color:#171a15f8 ; display: flex; width: 24px; border-radius: 25px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
-           <path fill="white" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-    </svg>
-</div>
-              <span>
-                Thierry Christophe
-              </span>
-            </a>
-            <a href="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CBE4DE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              
-              <span>
-                Email : demo@gmail.com
-              </span>
-            </a>
-            <a href="https://github.com/christophe1213/gestion_compte_bancaire">
-                <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CBE4DE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                </svg>
-              <span>
-                github:c
-              </span>
-            </a>
-          </div>
-    
-       
-              </div>
- 
-
-      </section> -->
+    <foot></foot>
 </template>
 <script>
-    import { RouterLink, RouterView } from 'vue-router'
-    import HelloWorld from './components/HelloWorld.vue'
+    import head_project from '@/components/head_project.vue'
     import affichage from './components/affichage.vue'
     // import graphe from '@/components/graphe.vue'
     import Barchart from '@/components/Barchart.vue'
     import Pie_Chart from '@/components/Pie_Chart.vue'
-
+    import foot from'@/components/foot.vue'
 
     export default{
         components:{
+            head_project ,
             affichage,
-            Pie_Chart
+            Pie_Chart,
+            foot
         },
         data(){
             return {
@@ -192,22 +138,7 @@ footer{
 /* header, main.table,.contener_graphe{display: none;} */
 
 /* footer section*/
-.footer_section {
-  position: relative;
-  background-color: #464444;
-  text-align: center;
-  margin-left:-25px ;
-  margin-right: -5px;
 
-  top: 40vh;
-
-}
-
-.footer_section p {
-  color: #fff8f8;
-  padding: 25px 0;
-  margin: 0;
-}
 
 
 /*# sourceMappingURL=style.css.map */
