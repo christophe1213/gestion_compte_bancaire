@@ -1,6 +1,11 @@
 <template>
-<div class="histogramme">
-  <h1>Camembert</h1>
+  
+  <div class="contener_graphe">
+    <div>
+      <h1>Camembert</h1>
+    </div>
+    <div class="a">
+      <div class="histogramme">
   <Pie
       :options="chartOptions"
       :data="chartData"
@@ -13,6 +18,10 @@
       :height="height"
     />
 </div>
+    </div>
+  
+  </div>
+
 
   </template>
   
@@ -46,11 +55,11 @@
       },
       width: {
         type: Number,
-        default: 100
+        default: 600
       },
       height: {
         type: Number,
-        default: 100
+        default: 700
       },
       cssClasses: {
         default: '',

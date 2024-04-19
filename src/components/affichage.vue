@@ -1,6 +1,6 @@
 <template>
- 
-    <ajout @c=" recuperation_donne_elt_enfant"  ref="ajout" ></ajout>
+    <div class="a">
+        <ajout @c=" recuperation_donne_elt_enfant"  ref="ajout" ></ajout>
     <modifier  @c="recuperation_donne_elt_enfant" @x="l" :client_modifier="client_traite" ref="modifier"></modifier>
     <supprimer @c="recuperation_donne_elt_enfant" :id="client_traite.numCompte" ref="supprimer"></supprimer>
     <main class="table">
@@ -52,14 +52,18 @@
         
     
     </section>
-    <div>
-        solde Total : {{ solde.soldeTotal }} Ar
-        solde Min : {{ solde.soldeMin }} Ar
-        solde Max : {{ solde.soldeMax }} Ar 
+
+    <div class="solde" >
+        <span>solde Total : {{ solde.soldeTotal }} Ar</span>
+        <span>solde Min : {{ solde.soldeMin }} Ar</span>
+        <span>solde Max : {{ solde.soldeMax }} Ar </span>
+ 
+        
     </div>
-  
  </main>
 
+    </div>
+    
 </template>
 <script>
     import Ajout from '@/components/ajout.vue';
