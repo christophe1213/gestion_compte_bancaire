@@ -112,7 +112,13 @@ export default{
             
             },
     fermer(){
-      this.afficher=false
+
+      
+      this.client.numCompte=''
+                this.client.nom=''
+                this.client.solde=''
+                this.afficher=false
+            
     }
   }
   }

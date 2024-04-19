@@ -7,7 +7,7 @@ body{
     /* display: flex;
     align-items: center;
     justify-content: center; */
-    vertical-align:middle ;
+    /* vertical-align:middle ; */
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
 }
@@ -25,8 +25,9 @@ header{
     position: absolute;
     top: 0;
     left: 0;
-    width:100vw;
+    width:84vw;
     padding: 20px 100px;
+    padding-top: 1px;
     background-color:#252525;
     display: flex;
     justify-content: space-between;
