@@ -18,17 +18,18 @@
 <style>
     .footer_section {
     position: relative;
-    background-color: #464444;
+    background-color: rgb(231, 227, 227);
     text-align: center;
     margin-left:-25px ;
     margin-right: -5px;
-
+    padding-top: -20px;
     top: 40vh;
 
     }
 
     .footer_section p {
-    color: #fff8f8;
+    /* color: #fff8f8; */
+    color: rgb(20, 20, 20);
     padding: 25px 0;
     margin: 0;
     }

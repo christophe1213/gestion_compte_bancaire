@@ -46,13 +46,11 @@
                 console.log(error)
             })
             
-            // console.log(this.id)
-            // console.log( "data ="+ this.d[1])
 
         },  
         non_supprimer(){
             this.afficher=false
-            // console.log(this.d)
+     
         },
         async r(){
             var  r = await axios.get('http://localhost/gestion_compte_bancaire/backend/Controleur/Affichage_donne.php')
