@@ -9,9 +9,9 @@
                     </svg>
               </div>
                 <p class="tittre_message">Ajout </p>
-                <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br>
-                <input type="text" v-model="client.nom" placeholder="Nom" pattern="[a-z]+"required><br>
-                <input type="number" v-model="client.solde" name="solde "placeholder="solde"  required ><br>
+                <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5" title="le numéro de compte est composé de 5 chifre"  required ><br>
+                <input type="text" v-model="client.nom" placeholder="Nom" pattern="[A-Z][a-z]+"required title="Le nom doit toujours commencer en Majuscule"><br>
+                <input type="number" v-model="client.solde" name="solde "  placeholder="solde"  required ><br>
                 <button class="btn_confi" type="submit"> Ajouter </button>
             </form>
         </div>
@@ -43,9 +43,8 @@ export default{
         if(this.client.numCompte!=''&&this.client.nom!=''&&this.client.solde!=''){
             axios.post('http://localhost/gestion_compte_bancaire/backend/Controleur/ajout.php',this.client).then((reponse)=>{
             console.log(reponse.data)
-            if(reponse.data!=='Succès')alert('Erreur veuillez vérifier le formulaire')
-            else{
-          
+            if(reponse.data!=='Succès')alert(reponse.data)
+            else{     
                 this.client.numCompte=''
                 this.client.nom=''
                 this.client.solde=''
