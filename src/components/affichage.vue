@@ -51,8 +51,8 @@
         </section>
 
         <div class="solde" >
-            <span>solde Total : {{ solde.soldeTotal }} Ar</span>
-            <span>solde Min : {{ solde.soldeMin }} Ar</span>
+            <span>solde Total : {{ solde.soldeTotal }} Ar </span>
+            <span>solde Min : {{ solde.soldeMin }} Ar </span>
             <span>solde Max : {{ solde.soldeMax }} Ar </span>
     
             
@@ -88,7 +88,7 @@
         ops(){
             return function(s){
                 if(s<1000) return 'Insuiffissant'
-                else if(s>1000&&s<=5000) return 'Moyen'
+                else if(s>=1000&&s<=5000) return 'Moyen'
                 else return 'élévée'
         
             }
