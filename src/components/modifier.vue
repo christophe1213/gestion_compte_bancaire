@@ -10,7 +10,7 @@
             </div> 
             <p class="tittre_message">Modifier </p>
                  <!-- <input type="text" v-model="client.numCompte" placeholder="numero compte" pattern="[0-9]+" maxlength="5" minlength="5"  required ><br> -->
-            <input type="text" v-model="client.nom" placeholder="Nom" pattern="[A-Za-z]+" required><br>
+            <input type="text" v-model="client.nom" placeholder="Nom" pattern="[A-Z][a-z]+" required><br>
              <input type="number" v-model="client.solde" name="solde" placeholder="solde"  required ><br>
              <button class="btn_confi" type="submit"> Modifier </button>       
          </form>
