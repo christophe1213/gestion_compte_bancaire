@@ -4,12 +4,15 @@
         <modifier  @c="recuperation_donne_elt_enfant" @x="l" :client_modifier="client_traite" ref="modifier"></modifier>
         <supprimer @c="recuperation_donne_elt_enfant" :id="client_traite.numCompte" ref="supprimer"></supprimer>
         <main class="table">
+            
             <section class="table_header">
+                <h1 style="margin: -00px; margin-bottom:15px">clients</h1>
                 <div class="btn_ajout" title="ajouter">
-                    <svg @click="ajout" viewBox="0 0 24 24" width="30" height="30">
+                    <svg @click="ajout" viewBox="0 0 24 24" width="24" height="24">
                         <path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm4 11h-3v3h-2v-3h-3v-2h3v-3h2v3h3v2z"/>
                     </svg>
-                </div>    
+                </div>
+               
             </section>
             <section class="table_body">
                 <table>
@@ -17,7 +20,7 @@
                         <tr>
                             <th>Nom</th>
                             <th>Solde</th>
-                            <th>Ops</th>
+                            <th>Obs</th>
                             <th>Modifier</th>
                             <th>supprimer</th>
                             

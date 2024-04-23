@@ -11,7 +11,8 @@ header{
     width:84vw;
     padding: 20px 100px;
     padding-top: 1px;
-    background-color:#252525;
+    background-color:#6b3a3a;
+    background-color: rgb(90, 87, 87);
     display: flex;
     justify-content: space-between;
     align-items: center;

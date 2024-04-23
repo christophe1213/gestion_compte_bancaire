@@ -3,9 +3,10 @@
 }*
 body{
     min-width: 100vh;
-    background-color: rgb(185, 191, 197);
-    background: linear-gradient(45deg, rgb(247, 245, 245), rgb(62, 62, 175));
+    background-color: rgb(197, 189, 185);
+    background: linear-gradient(45deg, rgb(235, 128, 128), rgb(62, 62, 175));
     height: 245vh;
+    /* background-color: rgb(194, 190, 190); */
     /* background: linear-gradient(red blue 45deg); */
     /* display: flex;
     align-items: center;
