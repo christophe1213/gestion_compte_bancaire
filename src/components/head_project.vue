@@ -1,6 +1,6 @@
 <template>
    <header> 
-    <h1 class="logo"> Application vuecli </h1>
+    <h1 class="logo"> Application gestion client </h1>
 </header>
 </template>
 <style>
